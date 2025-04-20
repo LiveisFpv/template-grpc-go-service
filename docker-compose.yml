@@ -1,0 +1,19 @@
+services:
+  goservice:
+    container_name: template-grpc-go-service
+    build: 
+      context: .
+    environment:
+      - GRPC_PORT=14500
+      - GRPC_TIMEOUT=24h
+    ports:
+      - 14500:14500
+    depends_on:
+      - db
+    networks:
+      - shared-network
+    
+
+networks:
+  shared-network:
+    external: true
